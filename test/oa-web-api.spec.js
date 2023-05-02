@@ -1,10 +1,10 @@
-let acorn = require("acorn");
-let fs = require("fs");
+const acorn = require("acorn");
+const fs = require("fs");
 
 //read analyzer.js file
-let code = fs.readFileSync("src/index.js", "utf8");
+const code = fs.readFileSync("src/index.js", "utf8");
 //parse the file
-let ast = acorn.parse(code, { ecmaVersion: 2020, sourceType: "module" });
+const ast = acorn.parse(code, { ecmaVersion: 2020, sourceType: "module" });
 
 const getASTMetrics = (node, metrics) => {
 
@@ -49,9 +49,10 @@ const getASTMetrics = (node, metrics) => {
     metrics[5].push(node);
   }
 
-  for (let key in node) {
+  for (const key in node) {
+    /* eslint-disable-next-line no-prototype-builtins */
     if (node.hasOwnProperty(key)) {
-      let child = node[key];
+      const child = node[key];
       if (typeof child === "object" && child !== null) {
         getASTMetrics(child, metrics);
       }
@@ -59,9 +60,9 @@ const getASTMetrics = (node, metrics) => {
   }
 }
 
-let metrics = [[], [], [], [], [], []];
+const metrics = [[], [], [], [], [], []];
 getASTMetrics(ast, metrics);
-let [
+const [
   querySelectorCalls,
   getElementByIdCalls,
   addEventListenerCalls,

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const css = require('css');
-const { log } = require('console');
 
 const html = fs.readFileSync('./src/index.html', 'utf-8');
 const page = new JSDOM(html);
