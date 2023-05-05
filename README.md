@@ -6,8 +6,9 @@
 * [2. Preámbulo](#2-preámbulo)
 * [3. Funcionalidades](#3-funcionalidades)
 * [4. Boilerplate](#4-boilerplate)
-* [4. Objetivos de aprendizaje y Criterios de aceptación mínimos del proyecto](#4-objetivos-de-aprendizaje-y-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+* [5. Objetivos de aprendizaje y Criterios de aceptación mínimos del proyecto](#5-objetivos-de-aprendizaje-y-criterios-de-aceptación-mínimos-del-proyecto)
+* [6. Pruebas](#6-pruebas)
+* [7. Pistas, tips y lecturas complementarias](#7-pistas-tips-y-lecturas-complementarias)
 
 ***
 
@@ -70,9 +71,9 @@ resultado en tiempo real a medida que el usuario escribe su texto:
     longitud media de las palabras en el texto de entrada y mostrársela al usuario.
 
 3. La aplicación debe permitir limpiar el contenido de la caja de texto haciendo
-clic en el botón.
+clic en un botón.
 
-![Text analyzer demo](text-analyzer-demo.gif "v")
+![Text analyzer demo](docs/images/text-analyzer-demo.gif "Text analyzer demo")
 
 ## 4. Boilerplate
 
@@ -111,6 +112,11 @@ El boilerplate que les damos contiene esta estructura:
   uso de tu aplicación
   web, así como una introducción a la aplicación, su funcionalidad y decisiones
   de diseño que tomaron.
+* `.github/workflows`: esta carpeta contine la configuracion para la ejecution
+  de Github Actions. No debes modificar esta carpeta ni su contenido.
+* `docs/images`: contiene las imagenes de este README.
+* `read-only/`: esta carpeta contiene las pruebas de criterios mínimos de
+  aceptación y end-to-end. No debes modificar esta carpeta ni su contenido.
 * [`src/index.html`](./src/index.html): este es el punto de entrada a tu
   aplicación. Este archivo debe contener tu HTML.
 * [`src/style.css`](./src/style.css): este archivo debe contener las reglas de
@@ -119,18 +125,18 @@ El boilerplate que les damos contiene esta estructura:
 * [`src/analyzer.js`](./src/analyzer.js): acá debes implementar el objeto
   `analyzer`, el cual ya está _exportado_ en el _boilerplate_. Este objeto
   (`analyzer`) debe contener seis métodos:
-  - `validator.getWordCount(text)`: esta función debe retornar el recuento de
+  - `analyzer.getWordCount(text)`: esta función debe retornar el recuento de
   palabras que se encuentran en el parámetro `text` de tipo `string`.
-  - `validator.getCharacterCount(text)`: esta función debe retornar el recuento
+  - `analyzer.getCharacterCount(text)`: esta función debe retornar el recuento
   de caracteres que se encuentran en el parámetro `text` de tipo `string`.
-  - `validator.getCharacterCountExcludingSpaces(text)`: esta función debe retornar
+  - `analyzer.getCharacterCountExcludingSpaces(text)`: esta función debe retornar
   el recuento de caracteres excluyendo espacios y signos de puntuación que se
   encuentran en el parámetro `text` de tipo `string`.
-  - `validator.getNumberCount(text)`: esta función debe retornar cúantos números
+  - `analyzer.getNumberCount(text)`: esta función debe retornar cúantos números
   se encuentran en el parámetro `text` de tipo `string`.
-  - `validator.getNumberSum(text)`: esta función debe retornar la suma de todos
+  - `analyzer.getNumberSum(text)`: esta función debe retornar la suma de todos
   los números que se encuentran en el parámetro `text` de tipo `string`.
-  - `validator.getAverageWordLength(text)`: esta función debe retornar la longitud
+  - `analyzer.getAverageWordLength(text)`: esta función debe retornar la longitud
   media de palabras que se encuentran en el parámetro `text` de tipo `string`.
 
   Para ejemplo de uso de cada función recomendamos ver el archivo
@@ -141,18 +147,6 @@ El boilerplate que les damos contiene esta estructura:
   en la UI (interfaz de usuario).
 * [`test/analyzer.spec.js`](./test/analyzer.spec.js): este archivo contiene las
 pruebas unitarias para los métodos del objeto `analyzer`.
-
-El _boilerplate_ incluye tareas que ejecutan [eslint](https://eslint.org/) y
-[htmlhint](https://github.com/yaniswang/HTMLHint) para verificar el `HTML` y
-`JavaScript` con respecto a una guías de estilos. Ambas tareas se ejecutan
-automáticamente antes de ejecutar las pruebas (tests) cuando usamos el comando
-`npm run test`. En el caso de `JavaScript` estamos usando un archivo de
-configuración de `eslint` que se llama `.eslintrc` que contiene un mínimo de
-información sobre el parser que usar (qué version de JavaScript/ECMAScript), el
-entorno (browser en este caso) y
-las [reglas recomendadas (`"eslint:recommended`)](https://eslint.org/docs/rules/).
-En cuanto a reglas/guías de estilo en sí,
-usaremos las recomendaciones _por defecto_ de tanto `eslint` como `htmlhint`.
 
 ***
 
@@ -232,7 +226,7 @@ El comando `npm run deploy` puede ayudarte con esta tarea y también puedes
   [`selectores CSS de ID`](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors#id_selectors)
   para darle estilo al
   [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
-  con el atributo `id` en el valor `update-button`.
+  con el atributo `id` en el valor `clear-button`.
 
 * **Modelo de caja (box model): border, margen, padding**
 
@@ -392,7 +386,92 @@ usuarias en el centro**
   [diseño visual](https://coda.io/d/Bootcamp-UX-Contenido_dqkqk2rV9Z2/Reglas-basicas-de-diseno-visual_suVcO)
   para diseñar la UI (interfáz gráfica)
 
-## 6. Pistas, tips y lecturas complementarias
+## 6. Pruebas
+
+Este proyecto cuenta con 3 conjuntos de pruebas que te ayudarán a conocer si
+cumples los criterios mínimos de aceptación.
+
+### Pruebas unitarias
+
+Una prueba unitaria es una técnica de prueba de software en la que se comprueba
+que cada componente individual de un programa o sistema funciona correctamente
+de manera aislada. En otras palabras, se prueba cada unidad de código por
+separado para asegurarse de que cumpla con los requisitos y especificaciones.
+
+Las pruebas unitarias de este proyecto ejecutarán los métodos `getWordCount`,
+`getCharacterCount`, `getCharacterCountExcludingSpaces`, `getNumbersCount`,
+`getNumbersSum` y `getAverageWordLength` con diferentes argumentos y se
+confirmará que los valores retornados sean los esperados.
+
+Puedes ejecutar estas pruebas con el comando `npm run test` como se muestra
+en la siguiente imagen:
+
+![npm run test](docs/images/npm-run-test.gif "npm run test")
+
+El _boilerplate_ incluye tareas que ejecutan [eslint](https://eslint.org/) y
+[htmlhint](https://github.com/yaniswang/HTMLHint) para verificar el `HTML` y
+`JavaScript` con respecto a una guías de estilos. Ambas tareas se ejecutan
+automáticamente antes de ejecutar las pruebas unitarias cuando usamos el comando
+`npm run test`. En el caso de `JavaScript` estamos usando un archivo de
+configuración de `eslint` que se llama `.eslintrc` que contiene un mínimo de
+información sobre el parser que usar (qué version de JavaScript/ECMAScript), el
+entorno (browser en este caso) y
+las [reglas recomendadas (`"eslint:recommended`)](https://eslint.org/docs/rules/).
+En cuanto a reglas/guías de estilo en sí,
+usaremos las recomendaciones _por defecto_ de tanto `eslint` como `htmlhint`.
+
+### Pruebas de criterios mínimos de aceptación
+
+Estas pruebas analizarán tus archivos
+[`index.html`](src/index.html),
+[`index.js`](src/index.html),
+[`analyzer.js`](src/analyzer.js)
+y
+[`style.css`](src/style.css)
+para verificar que cumples con los
+[criterios minimos de aceptacion](#5-objetivos-de-aprendizaje-y-criterios-de-aceptación-mínimos-del-proyecto).
+Cada criterio esta relacionado con un objetivo de aprendizaje.
+
+Puedes ejecutar todas estas pruebas con el comando `npm run test:oas`
+como se muestra en la siguiente imagen:
+
+![npm run test oas](docs/images/npm-run-test-oas.gif "npm run test oas")
+
+Puedes ejecutar las pruebas de cada grupo de objetivos de aprendizaje de
+manera individual con los siguientes comandos:
+
+* `npm run test:oas-html`
+* `npm run test:oas-css`
+* `npm run test:oas-web-api`
+* `npm run test:oas-js`
+
+#### Pruebas end-to-end
+
+Una prueba end-to-end (E2E) es una técnica de prueba de software en la que
+se verifica el funcionamiento de todo el sistema desde el inicio hasta el
+final. En otras palabras, se prueba el flujo completo del software, simulando
+la interacción del usuario con la aplicación, para asegurarse de que todas las
+partes del sistema funcionan correctamente en conjunto.
+
+Puedes ejecutar estas pruebas con el comando `npm run test:e2e` como se muestra
+en la siguiente imagen:
+
+![npm run test e2e](docs/images/npm-run-test-e2e.gif "npm run test e2e")
+
+### Github actions
+
+Este repositorio usa una GitHub Action para ejecutar automáticamente
+las pruebas unitarias, pruebas de criterios mínimos de aceptación y
+y pruebas end-to-end cada vez que se hagas un _push_ en la rama
+_main_ de tu repositorio.
+
+Puedes consultar el resultado de esta Github Action
+en la pestaña _Actions_ de tu repositorio en Github
+como se muestra en la siguiente imagen:
+
+![Github Action](docs/images/githubaction.gif "Github Action")
+
+## 7. Pistas, tips y lecturas complementarias
 
 ### Prepara tu PC para trabajar
 

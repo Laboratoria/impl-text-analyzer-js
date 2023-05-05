@@ -21,7 +21,7 @@ textarea.addEventListener('keyup', () => {
   updateMetrics(text);
 });
 
-const button = document.getElementById('update-button');
+const button = document.getElementById('clear-button');
 button.addEventListener('click', () => {
   textarea.value = '';
   updateMetrics('');
