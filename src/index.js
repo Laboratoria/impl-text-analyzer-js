@@ -16,12 +16,12 @@ const updateMetrics = (text) => {
 };
 
 const textarea = document.querySelector('textarea[name="user-input"]');
-textarea.addEventListener('keyup', () => {
+textarea.addEventListener('input', () => {
   const text = textarea.value;
   updateMetrics(text);
 });
 
-const button = document.getElementById('clear-button');
+const button = document.getElementById('reset-button');
 button.addEventListener('click', () => {
   textarea.value = '';
   updateMetrics('');

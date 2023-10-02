@@ -12,23 +12,23 @@
     <h1>Analizador de texto</h1>
   </header>
   <main>
-    <ul class="metrics">
-      <li class="metric">
+    <ul>
+      <li class="metric" data-testid="character-count">
         Caracteres: 0
       </li>
-      <li class="metric">
+      <li class="metric" data-testid="character-no-spaces-count">
         Caracteres Sin Espacios: 0
       </li>
-      <li class="metric">
+      <li class="metric" data-testid="word-count">
         Palabras: 0
       </li>
-      <li class="metric">
+      <li class="metric" data-testid="number-count">
         Números: 0
       </li>
-      <li class="metric">
+      <li class="metric" data-testid="number-sum">
         Suma números: 0
       </li>
-      <li class="metric">
+      <li class="metric" data-testid="word-length-average">
         Promedio longitud: 0
       </li>
     </ul>
@@ -36,7 +36,7 @@
       <textarea name="user-input"></textarea>
     </section>
     <section>
-      <button id="clear-button">Limpiar métricas</button>
+      <button id="reset-button">Limpiar métricas</button>
     </section>
   </main>  
   <footer>

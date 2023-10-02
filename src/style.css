@@ -36,7 +36,7 @@ textarea[name="user-input"] {
   margin-bottom: 10px;
 }
 
-#clear-button {
+#reset-button {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -47,11 +47,11 @@ textarea[name="user-input"] {
   opacity: 0.9;
 }
 
-#clear-button:hover {
+#reset-button:hover {
   opacity: 1;
 }
 
-.metrics {
+ul {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -67,12 +67,4 @@ textarea[name="user-input"] {
   margin-right: 10px;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.metric-title {
-  color: rgba(31, 41, 55, 0.6);
-}
-
-.metric-value{
-  font-size: 34px;
 }

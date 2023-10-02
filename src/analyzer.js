@@ -4,21 +4,7 @@ const PUNCTUATION_MARKS = ['.', ',', ';', ':', '"', '¿', '?', '¡', '!', '-', '
 
 const getWords = (text) => {
   //get words from text using a for
-  const words = [];
-  let currentWord = '';
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === SPACE || PUNCTUATION_MARKS.includes(text[i])) {
-      if (currentWord.length > 0) {
-        words.push(currentWord);
-      }      
-      currentWord = '';
-      continue;
-    }
-    currentWord = currentWord + text[i];
-  }
-  if (currentWord.length > 0) {
-    words.push(currentWord);
-  }
+  const words = text.split(SPACE);
   return words;
 };
 
